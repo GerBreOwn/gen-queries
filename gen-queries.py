@@ -23,7 +23,7 @@ with conn.cursor() as cursor:
 		print("Y", y)
 		ce = f"select column_name from information_schema.columns where table_schema = 'public' and table_name= '{y}'"
 		print("CE",ce)
-		cursor.execute("select column_name from information_schema.columns where table_schema = 'public' and table_name='y'")
+		cursor.execute(ce)
 		# ~ column_names = cursor.fetchall()
 		column_names.append([row[0] for row in cursor])
 	
