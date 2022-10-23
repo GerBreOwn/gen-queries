@@ -13,14 +13,19 @@ cursor.execute("select relname from pg_class where relkind='r' and relname !~ '^
 tbls = cursor.fetchall()
 t1 = list(itertools.chain(*tbls))
 print("Tables",t1)
-print(t1[0])
-# ~ print(cursor.fetchall())
 
+column_names = []
+x = len(t1)
 with conn.cursor() as cursor:
-	for i in t1:
-		cursor.execute("select column_name from information_schema.columns where table_schema = 'public' and table_name='t1[i]'")
+	for i in range (x):
+		# ~ print("T1", t1[i])
+		y = t1[i]
+		print("Y", y)
+		ce = f"select column_name from information_schema.columns where table_schema = 'public' and table_name= '{y}'"
+		print("CE",ce)
+		cursor.execute("select column_name from information_schema.columns where table_schema = 'public' and table_name='y'")
 		# ~ column_names = cursor.fetchall()
-		column_names = [row[0] for row in cursor]
+		column_names.append([row[0] for row in cursor])
 	
 print("Cols", column_names)
 # ~ print("Column names: {}\n".format(column_names))
