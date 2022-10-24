@@ -20,12 +20,14 @@ with conn.cursor() as cursor:
 	for i in range (x):
 		# ~ print("T1", t1[i])
 		y = t1[i]
-		print("Y", y)
+		# ~ print("Y", y)
 		ce = f"select column_name from information_schema.columns where table_schema = 'public' and table_name= '{y}'"
-		print("CE",ce)
+		# ~ print("CE",ce)
 		cursor.execute(ce)
+		
 		# ~ column_names = cursor.fetchall()
 		column_names.append([row[0] for row in cursor])
-	
+		print("R0:", row[0])
+# ~ cn = list(itertools.chain(*column_names))
 print("Cols", column_names)
 # ~ print("Column names: {}\n".format(column_names))
