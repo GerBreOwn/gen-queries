@@ -5,12 +5,15 @@ import example_psql as creds
 import itertools
 import get_names
 
-dt = ["hour", "date", "month", "year"
+dt = ["hour", "date", "month", "year"]
 
 def build_queries(names):
+	
 	sql1a = f"select "
 	sql1b = f" list columns"
-	sql1c = f" from etc"
+	sql1c = f" from {names[0]} where  created >= {dt[0]}"
+	sql1 = sql1a + sql1b + sql1c
+	print(sql1)
 	
 	sql2a = f"select extract {dt[0]} from created as {dt[0]}, "
 	sql2b = f"list columns"
@@ -18,8 +21,8 @@ def build_queries(names):
 
 def main():
 	global names
-	tnames, cnames = get_names.sql_names()
-	print(tnames)
+	tnames = get_names.sql_names()
+	print("TNAMES",tnames)
 	# ~ c_names = get_names(k)
 	build_queries(tnames)
 	
