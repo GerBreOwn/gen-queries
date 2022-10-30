@@ -15,17 +15,13 @@ def sql_names():
 	cursor.execute(sql1_get_names)
 	tbls = cursor.fetchall()
 	names = [list(ele) for ele in tbls]
-	for table in names:
-		for col in table:
-			print(col,)
-			for itm in col:
-				if itm == "id" or itm == "created":
-					continue
-				# ~ c.append(itm)
-				# ~ print(c)
-		# ~ print
-		
 	
+	for table in names:
+		print("T0",table[0])
+		for col in table[1]:
+			print("C",col)
+		
+			
 def main():
 	sql_names()
 	
