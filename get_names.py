@@ -14,22 +14,17 @@ def sql_names():
 	cursor = conn.cursor()
 	cursor.execute(sql1_get_names)
 	tbls = cursor.fetchall()
-	t = []
-	c = []
-	for t_name, c_name in tbls:
-		t.append(t_name)
-		t = []
-		for k in c_name:
-			if k == "id" or k == "created":
-				continue
-			else:
-				c.append(k)
-		names.append(t)
-		names.append(c)
-	
-	print(names)
-	
-	return names
+	names = [list(ele) for ele in tbls]
+	for table in names:
+		for col in table:
+			print(col,)
+			for itm in col:
+				if itm == "id" or itm == "created":
+					continue
+				# ~ c.append(itm)
+				# ~ print(c)
+		# ~ print
+		
 	
 def main():
 	sql_names()
